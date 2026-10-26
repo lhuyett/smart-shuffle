@@ -1,0 +1,26 @@
+# Generate the Xcode project with: brew install xcodegen && xcodegen
+name: SmartShuffle
+options:
+  bundleIdPrefix: com.lhuyett
+  deploymentTarget:
+    iOS: "17.0"
+packages:
+  SmartShuffleCore:
+    path: Packages/SmartShuffleCore
+targets:
+  SmartShuffle:
+    type: application
+    platform: iOS
+    sources: [App]
+    dependencies:
+      - package: SmartShuffleCore
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.lhuyett.smartshuffle
+        SWIFT_VERSION: "5.10"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_NSAppleMusicUsageDescription: "Smart Shuffle plays your Apple Music playlists and learns which songs you skip."
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIBackgroundModes: audio
+        # Set your Apple Developer team here (MusicKit requires a paid account).
+        DEVELOPMENT_TEAM: ""
